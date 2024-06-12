@@ -1,0 +1,20 @@
+entity Bank {
+    name String required,
+    address String
+}
+
+entity Branch {
+    name String required,
+    code String
+}
+
+entity Account {
+    number String required,
+    balance BigDecimal required,
+    createdDate Instant required
+}
+
+relationship OneToMany {
+    Bank{branch} to Branch{bank(name)},
+    Branch{account} to Account{branch(name)}
+}
